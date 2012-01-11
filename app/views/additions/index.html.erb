@@ -1,0 +1,27 @@
+<h1>Listing additions</h1>
+
+<table>
+  <tr>
+    <th>Amount</th>
+    <th>User</th>
+    <th>Stripe customer token</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @additions.each do |addition| %>
+  <tr>
+    <td><%= addition.amount_id %></td>
+    <td><%= addition.user_id %></td>
+    <td><%= addition.stripe_customer_token %></td>
+    <td><%= link_to 'Show', addition %></td>
+    <td><%= link_to 'Edit', edit_addition_path(addition) %></td>
+    <td><%= link_to 'Destroy', addition, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Addition', new_addition_path %>

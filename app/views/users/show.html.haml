@@ -1,0 +1,14 @@
+%p#notice= notice
+%p
+  %b Email:
+  = @user.email
+%p
+  %b Name:
+  = @user.name
+  =@user.account.additions.each do  |x|
+    %p=x.cents
+= link_to 'Edit', edit_user_path(@user)
+|
+\#{link_to 'Back', users_path}
+=link_to 'Add money', new_addition_path(@user)
+/=link_to 'look at your account', accounts_path(@user)

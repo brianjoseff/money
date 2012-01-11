@@ -1,0 +1,20 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Amount:</b>
+  <%= @addition.amount_id %>
+</p>
+
+<p>
+  <b>User:</b>
+  <%= @addition.user_id %>
+</p>
+
+<p>
+  <b>Stripe customer token:</b>
+  <%= @addition.stripe_customer_token %>
+</p>
+
+
+<%= link_to 'Edit', edit_addition_path(@addition) %> |
+<%= link_to 'Back', additions_path %>

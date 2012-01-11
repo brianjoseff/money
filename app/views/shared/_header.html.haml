@@ -1,0 +1,7 @@
+%nav
+	%ul		
+		-if signed_in?			
+			%li= link_to "home", user_path(current_user)
+			%li= link_to "sign out", signout_path
+		-else
+			%li= link_to "sign in", signin_path

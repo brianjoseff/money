@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/Fixtures.html
+
+one:
+  amount_id: 1
+  user_id: 1
+  stripe_customer_token: MyString
+
+two:
+  amount_id: 1
+  user_id: 1
+  stripe_customer_token: MyString

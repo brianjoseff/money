@@ -1,0 +1,32 @@
+-if 
+  %h1 Sign up
+-else
+  %h1 Edit
+=form_for(@user) do |f|
+  =render "shared/error_messages", :target => @user
+  =f.hidden_field :stripe_card_token
+  %dl
+    %dt.field=f.label :name
+    %dd.field=f.text_field :name
+    %dt.field=f.label :email
+    %dd.field=f.text_field :email
+    -if @user.new_record?
+      %dt.field=f.label :password
+      %dd.field=f.password_field :password
+    -if @user.stripe_card_token.present?
+      Credit card has been provided.
+    -else
+      .field
+        =label_tag :card_number, "Credit Card Number"
+        =text_field_tag :card_number, nil,:name => nil
+      .field
+        =label_tag :card_code, "Security Code on Card (CVV)"
+        =text_field_tag :card_code, nil, :name => nil
+      .field
+        =label_tag :card_month, "Card Expiration"
+        =select_month nil, {:add_month_numbers => true}, {:name => nil, :id => "card_month"}
+        =select_year nil, {:start_year => Date.today.year, :end_year => Date.today.year+15}, {:name => nil, :id => "card_year"}
+      #stripe_error
+      %noscript JavaScript is not enabled and is required for this form. First enable it in your web browser settings.
+  .actions
+    =f.submit( "Sign Up")

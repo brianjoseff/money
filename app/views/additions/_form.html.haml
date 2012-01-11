@@ -1,0 +1,13 @@
+=nested_form_for @addition do |f|
+  -if @addition.errors.any?
+    .error_messages
+      %h2
+        =pluralize(@addition.errors.count, "error")
+        prohibited this addition from being saved:
+      %ul
+        -@addition.errors.full_messages.each do |msg|
+          %li= msg
+  =f.collection_select( :amount_id, Amount.all, :id, :dollar_value)
+  =f.hidden_field :account_id
+  .actions
+    =f.submit "Put money in your account"
